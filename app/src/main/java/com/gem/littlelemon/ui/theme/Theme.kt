@@ -14,7 +14,7 @@ private val LittleLemonColorScheme = lightColorScheme(
     onBackground     = Highlight2,
     surface          = Highlight1,
     onSurface        = Highlight2
-)
+) 
 
 @Composable
 fun LittleLemonTheme(content: @Composable () -> Unit) {
