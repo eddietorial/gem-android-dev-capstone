@@ -39,7 +39,7 @@ fun Profile(navController: NavHostController) {
     val firstName = prefs.getString(KEY_FIRST, "") ?: ""
     val lastName  = prefs.getString(KEY_LAST,  "") ?: ""
     val email     = prefs.getString(KEY_EMAIL, "") ?: ""
-
+ 
     Column(
         modifier            = Modifier.fillMaxSize().background(Highlight1),
         horizontalAlignment = Alignment.CenterHorizontally
