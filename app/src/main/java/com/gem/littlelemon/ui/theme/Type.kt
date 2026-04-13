@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.sp
 import com.gem.littlelemon.R
 
 // Font families from the Little Lemon style guide.
-// The .ttf files live in res/font/ (see GUIDE.md Step 4 for copy instructions).
+// The .ttf files live in res/font/.
 val MarkaziText = FontFamily(
     Font(R.font.markazi_text_regular, FontWeight.Normal)
 )
