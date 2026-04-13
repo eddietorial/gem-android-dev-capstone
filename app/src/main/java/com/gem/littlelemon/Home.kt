@@ -54,7 +54,7 @@ import com.gem.littlelemon.ui.theme.Karla
 import com.gem.littlelemon.ui.theme.LittleLemonTheme
 import com.gem.littlelemon.ui.theme.Primary1
 import com.gem.littlelemon.ui.theme.Primary2
- 
+
 @Composable
 fun Home(navController: NavHostController) {
     val context  = LocalContext.current

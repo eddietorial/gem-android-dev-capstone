@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
 
     // Ktor client configured with the JSON serialization plugin.
     // ignoreUnknownKeys = true makes the client tolerant of any extra fields
-    // the API might add in the future without crashing deserialization.
+    // the API might add in the future without crashing deserialization. 
     private val httpClient = HttpClient(Android) {
         install(ContentNegotiation) {
             json(Json { ignoreUnknownKeys = true })
