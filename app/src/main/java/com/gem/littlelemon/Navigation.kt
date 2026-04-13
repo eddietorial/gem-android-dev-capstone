@@ -14,7 +14,7 @@ const val KEY_LAST     = "lastName"
 const val KEY_EMAIL    = "email"
 
 /**
- * The NavHost that wires all three screens together.
+ * The NavHost that wires all three screens together. 
  *
  * Start destination logic:
  *   - If firstName is already saved the user previously registered,
