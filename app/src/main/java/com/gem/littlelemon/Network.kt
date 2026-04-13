@@ -3,7 +3,7 @@ package com.gem.littlelemon
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-// The JSON shape returned by the Little Lemon API.
+// The JSON shape returned by the Little Lemon API. 
 @Serializable
 data class MenuNetwork(
     @SerialName("menu") val menu: List<MenuItemNetwork>
