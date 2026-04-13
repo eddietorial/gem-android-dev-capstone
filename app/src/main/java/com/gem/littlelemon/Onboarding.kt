@@ -117,7 +117,7 @@ fun Onboarding(navController: NavHostController) {
         )
 
         Spacer(modifier = Modifier.height(32.dp))
-
+         
         // ---- Register button ---------------------------------------------
         Button(
             onClick = {

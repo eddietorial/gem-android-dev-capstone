@@ -12,7 +12,7 @@ import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-// ---- Entity ---------------------------------------------------------------- 
+// ---- Entity ----------------------------------------------------------------
 
 @Entity(tableName = "menu_item_table")
 data class MenuItemEntity(
