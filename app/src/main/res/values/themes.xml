@@ -1,0 +1,13 @@
+<resources>
+    <!--
+        This is the Android window/launch theme - it is active only during
+        app startup before Compose draws anything. It must extend a Material
+        or AppCompat theme so the activity can launch correctly.
+
+        LittleLemonTheme (in ui/theme/Theme.kt) takes over once setContent
+        is called in MainActivity and controls all visual styling from that
+        point onward.
+    -->
+    <style name="Theme.LittleLemon" parent="android:Theme.Material.Light.NoActionBar">
+    </style>
+</resources>

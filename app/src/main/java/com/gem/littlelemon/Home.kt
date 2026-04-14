@@ -253,9 +253,84 @@ fun MenuBreakdown(
 
 // ---- Single menu item row -------------------------------------------------
 
+/**
+ * Maps a menu item title to a local drawable resource.
+ * Used as a Glide error/fallback for remote URLs that fail to load.
+ * The API item titles are matched case-insensitively.
+ */
+//private fun localFallback(title: String): Int? = when (title.trim().lowercase()) {
+//    "greek salad"   -> R.drawable.greek_salad
+//    "lemon desert"  -> R.drawable.lemon_dessert
+//    "grilled fish"  -> R.drawable.grilled_fish
+//    "pasta"         -> R.drawable.pasta
+//    "bruschetta"    -> R.drawable.bruschetta
+//    else            -> null
+//}
+
+private fun localImage(title: String): Int? = when (title.trim().lowercase()) {
+    "lemon desert" -> R.drawable.lemon_dessert
+    "grilled fish" -> R.drawable.grilled_fish
+    else           -> null
+}
+
+//@OptIn(ExperimentalGlideComposeApi::class)
+//@Composable
+//fun MenuItem(item: MenuItemEntity) {
+//    val fallback = localFallback(item.title)
+//
+//    Row(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(horizontal = 16.dp, vertical = 12.dp),
+//        verticalAlignment = Alignment.CenterVertically
+//    ) {
+//        Column(modifier = Modifier.weight(1f)) {
+//            Text(
+//                text       = item.title,
+//                fontFamily = Karla,
+//                fontWeight = FontWeight.Bold,
+//                fontSize   = 16.sp,
+//                color      = Highlight2
+//            )
+//            Spacer(modifier = Modifier.height(4.dp))
+//            Text(
+//                text       = item.description,
+//                fontFamily = Karla,
+//                fontSize   = 14.sp,
+//                color      = Highlight2.copy(alpha = 0.7f),
+//                maxLines   = 2
+//            )
+//            Spacer(modifier = Modifier.height(6.dp))
+//            Text(
+//                text       = "$${item.price}",
+//                fontFamily = Karla,
+//                fontWeight = FontWeight.SemiBold,
+//                fontSize   = 14.sp,
+//                color      = Primary1
+//            )
+//        }
+//        Spacer(modifier = Modifier.width(12.dp))
+//        GlideImage(
+//            model              = item.image,
+//            contentDescription = item.title,
+//            modifier           = Modifier
+//                .size(80.dp)
+//                .clip(RoundedCornerShape(8.dp)),
+//            contentScale       = ContentScale.Crop
+//        ) { requestBuilder ->
+//            // If the remote URL fails (network error, 404, unreliable host),
+//            // Glide falls back to the matching local drawable in res/drawable/.
+//            if (fallback != null) requestBuilder.error(fallback).fallback(fallback)
+//            else requestBuilder
+//        }
+//    }
+//}
+
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun MenuItem(item: MenuItemEntity) {
+    val local = localImage(item.title)
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -288,14 +363,25 @@ fun MenuItem(item: MenuItemEntity) {
             )
         }
         Spacer(modifier = Modifier.width(12.dp))
-        GlideImage(
-            model              = item.image,
-            contentDescription = item.title,
-            modifier           = Modifier
-                .size(80.dp)
-                .clip(RoundedCornerShape(8.dp)),
-            contentScale       = ContentScale.Crop
-        )
+        if (local != null) {
+            Image(
+                painter            = painterResource(id = local),
+                contentDescription = item.title,
+                modifier           = Modifier
+                    .size(80.dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale       = ContentScale.Crop
+            )
+        } else {
+            GlideImage(
+                model              = item.image,
+                contentDescription = item.title,
+                modifier           = Modifier
+                    .size(80.dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale       = ContentScale.Crop
+            )
+        }
     }
 }
 

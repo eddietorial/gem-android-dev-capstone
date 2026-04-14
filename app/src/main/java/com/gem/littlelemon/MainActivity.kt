@@ -23,12 +23,12 @@ import kotlinx.serialization.json.Json
 
 class MainActivity : ComponentActivity() {
 
-    // Ktor client configured with the JSON serialization plugin.
-    // ignoreUnknownKeys = true makes the client tolerant of any extra fields
-    // the API might add in the future without crashing deserialization. 
     private val httpClient = HttpClient(Android) {
         install(ContentNegotiation) {
-            json(Json { ignoreUnknownKeys = true })
+            json(
+                json = Json { ignoreUnknownKeys = true },
+                contentType = io.ktor.http.ContentType.Any
+            )
         }
     }
 
@@ -36,8 +36,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Fetch and cache menu items in the background.
-        // IO dispatcher keeps network work off the main thread.
         val database = AppDatabase.getDatabase(applicationContext)
         lifecycleScope.launch(Dispatchers.IO) {
             val items = fetchMenu()
@@ -50,8 +48,6 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     Navigation(
                         navController = navController,
-                        // Note: Modifier.padding(innerPadding) is applied inside Navigation
-                        // via the Scaffold padding so the bottom nav bar does not overlap.
                     )
                 }
             }

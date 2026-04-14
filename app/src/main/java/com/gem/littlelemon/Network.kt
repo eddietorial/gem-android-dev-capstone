@@ -25,6 +25,9 @@ fun MenuItemNetwork.toMenuItemEntity() = MenuItemEntity(
     title       = title,
     description = description,
     price       = price,
-    image       = image,
+    image       = image
+        .replace("https://github.com/", "https://raw.githubusercontent.com/")
+        .replace("/blob/", "/")
+        .replace("?raw=true", ""),
     category    = category
 )

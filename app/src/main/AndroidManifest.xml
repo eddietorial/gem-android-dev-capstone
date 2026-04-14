@@ -23,6 +23,10 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="developer_info"
+            android:resource="@xml/developer_info" />
+
     </application>
 
 </manifest>
