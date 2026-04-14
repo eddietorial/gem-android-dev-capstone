@@ -69,7 +69,7 @@ On first launch the app shows the Onboarding screen. Enter your name and email t
 ## Project Structure
 
 ```
-app/src/main/java/com/yourname/littlelemon/
+app/src/main/java/com/gem/littlelemon/
     MainActivity.kt       - Entry point; Ktor fetch and Room insert on launch
     Navigation.kt         - NavHost; login-state-aware start destination
     Destinations.kt       - Typed route objects (Onboarding, Home, Profile)
